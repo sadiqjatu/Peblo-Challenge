@@ -171,6 +171,8 @@ class StoryBuddyViewController: UIViewController {
     
     
     @objc func readMeButtonPressed() {
+        if case .loading = currentNarrationState { return }
+        
         if synthesizer.isSpeaking {
             synthesizer.stopSpeaking(at: .immediate)
             currentNarrationState = .idle
@@ -181,6 +183,8 @@ class StoryBuddyViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self  = self else { return }
+            
+            guard case .loading = self.currentNarrationState else { return }
             self.startTextToSpeechEngine()
         }
     }
@@ -270,6 +274,11 @@ extension StoryBuddyViewController: AVSpeechSynthesizerDelegate {
     
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        guard case .speaking = currentNarrationState else {
+            currentNarrationState = .idle
+            return
+        }
+        
         currentNarrationState = .idle
         guard let quizData = targetQuizData else { return }
         revealQuizEngineLayout(with: quizData)
