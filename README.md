@@ -23,21 +23,10 @@ In order to retrieve the frequently accessed audio/text assets from an external 
 ---
 
 ## 🛠 Performance Optimization
-
-### Profiling & Rendering
-Performance was monitored using Instruments and Core Animation tools. Layout constraints were simplified, unnecessary rendering passes were removed, and button animations were GPU-accelerated using `CGAffineTransform`.
-
-### Optimizations
-- Dynamic Auto Layout sizing instead of fixed heights.
-- GPU-driven animations and shadows.
-- `CAEmitterLayer` for efficient particle effects.
-- Maintained smooth 60/120 FPS performance during transitions and animations.
-
-### Lightweight Design
-Visual effects are generated programmatically using Core Graphics instead of bundled image assets, reducing app size and memory usage.
+- Eliminated Storyboards and .xib files entirely, initializing all the views natively via swift code init(frame :)
 
 ---
 
 ## 🤖 AI Usage
 
-AI was used as a development assistant to brainstorm JSON structures, animation concepts, and implementation approaches. All architectural decisions, integration, debugging, and final code were reviewed and implemented manually.
+AI was used as a development assistant to brainstorm animation concepts, and implementation approaches. All architectural decisions, integration, debugging, and final code were reviewed and implemented manually.
