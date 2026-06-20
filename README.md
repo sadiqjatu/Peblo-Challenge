@@ -18,7 +18,7 @@ A dedicated narration state machine (`idle`, `loading`, `speaking`, `failed`) ma
 - Failure: Presents a retry flow with graceful error handling and no app crashes.
 
 ### Caching Strategy
-`NSCache` is used to store frequently accessed audio/text assets. Cached content loads instantly, reducing network requests and improving responsiveness.
+In order to retrieve the frequently accessed audio/text assets from an external API like  <code>ElevenLabs</code>, i would have stored in the cache by utilizing <code>NSCache</code> as the cache content loads instantly, resulting into reduced network request and improved responsiveness.
 
 ---
 
